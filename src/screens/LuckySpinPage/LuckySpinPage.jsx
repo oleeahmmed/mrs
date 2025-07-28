@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Frame, OverlapWrapper } from "./sections";
+import { OverlapWrapper } from "./sections";
 import { prizeListData, winnerListData, wheelSegments } from "./data/spinData";
-import { Header, Footer } from "../../component";
+import { Header, Footer, Frame} from "../../component";
 
 export const LuckySpinPage = () => {
   const [spinsAvailable, setSpinsAvailable] = useState(0);

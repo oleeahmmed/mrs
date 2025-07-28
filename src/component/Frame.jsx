@@ -13,22 +13,22 @@ export const Frame = () => {
               {/* <img
                 className="absolute w-[350px] h-[61px] top-0.5 left-0"
                 alt="Rectangle"
-                src="https://c.animaapp.com/mdfn2b29iC3wMU/img/rectangle-1622.svg"
+                src="/images/rectangle-1622.svg"
               /> */}
               <img
                 className="absolute w-[262px] h-[17px] top-[18px] left-[52px]"
                 alt="Rectangle"
-                src="https://c.animaapp.com/mdfn2b29iC3wMU/img/rectangle-1626.svg"
+                src="/images/rectangle-1626.svg"
               />
               <img
                 className="absolute w-[146px] h-[15px] top-[19px] left-[53px]"
                 alt="Rectangle"
-                src="https://c.animaapp.com/mdfn2b29iC3wMU/img/rectangle-1627.svg"
+                src="/images/rectangle-1627.svg"
               />
               <img
                 className="absolute w-[54px] h-[54px] top-0 left-[3px]"
                 alt="Bronze"
-                src="https://c.animaapp.com/mdfn2b29iC3wMU/img/bronze.png"
+                src="/images/bronze.png"
               />
               <p className="absolute top-5 left-[58px] font-inter font-semibold text-white text-[10px] text-center tracking-[0] leading-normal">
                 Your points balance is 2,000
@@ -50,12 +50,12 @@ export const Frame = () => {
                 <img
                   className="absolute w-[31px] h-8 top-0 left-2"
                   alt="Element"
-                  src="https://c.animaapp.com/mdfn2b29iC3wMU/img/42-4.png"
+                  src="/images/42-4.png"
                 />
                 <img
                   className="absolute w-[31px] h-[31px] top-1 left-0 object-cover"
                   alt="Element"
-                  src="https://c.animaapp.com/mdfn2b29iC3wMU/img/60-3.png"
+                  src="/images/60-3.png"
                 />
               </div>
             </div>

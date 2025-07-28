@@ -1,63 +1,74 @@
+// This is a conceptual example for your actual Footer.jsx file.
+// You will need to apply these changes to your Footer.jsx manually.
 import React from "react";
+import { Link } from "react-router-dom"; // <--- Import Link
 
-export const Footer = () => {
+export const Footer = () => { // <--- Remove onNavigate prop here
   return (
-    <div className="absolute w-[375px] h-[83px] top-[594px] left-0">
-      <div className="relative h-[83px] bg-[#070707] rounded-b-[21px] overflow-hidden border-t border-solid shadow-[0px_1px_62px_1px_rgba(242,195,107,0.36)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-b-[21px] before:bg-gradient-to-t before:from-[rgba(242,195,107,0)] before:to-[rgba(221,143,31,0.26)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
+    <div className="fixed bottom-0 left-0 right-0 w-[375px] h-[83px] mx-auto z-50">
+      <div className="relative h-[83px] bg-[#070707] rounded-t-[21px] overflow-hidden border-t border-solid shadow-[0px_1px_62px_1px_rgba(242,195,107,0.36)] before:content-[''] before:absolute before:inset-0 before:p-px before:rounded-t-[21px] before:bg-gradient-to-t before:from-[rgba(242,195,107,0)] before:to-[rgba(221,143,31,0.26)] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:z-[1] before:pointer-events-none">
         <div className="inline-flex items-center gap-3.5 relative top-3 left-1.5">
-          <div className="flex flex-col w-[54px] items-center gap-[5px] relative opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer group">
+
+          {/* Example for Home button using Link */}
+          <Link to="/" className="flex flex-col w-[54px] items-center gap-[5px] relative opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer group">
             <div className="h-1 w-0 bg-gradient-to-b from-[#F2C36B] to-[#DD8F1F] group-hover:w-full transition-all duration-300 rounded-b-md absolute top-[-12px]"></div>
             <img
               className="relative w-[34px] h-[34px] object-cover"
               alt="Home"
-              src="https://c.animaapp.com/mdfn2b29iC3wMU/img/image-11.png"
+              src="/images/image-11.png"
             />
             <div className="relative self-stretch font-inter font-medium text-white text-sm text-center tracking-[0] leading-normal">
               Home
             </div>
-          </div>
-          <div className="flex flex-col w-[74px] items-center gap-[5px] relative group scale-110">
+          </Link>
+
+          {/* Example for Lucky Spin button using Link */}
+          <Link to="/lucky-spin" className="flex flex-col w-[74px] items-center gap-[5px] relative group scale-110">
             <div className="h-1 w-full bg-gradient-to-b from-[#F2C36B] to-[#DD8F1F] rounded-b-md absolute top-[-12px]"></div>
             <img
               className="relative w-9 h-9"
               alt="Lucky Spin"
-              src="https://c.animaapp.com/mdfn2b29iC3wMU/img/group-2.png"
+              src="/images/group-2.png"
             />
             <div className="relative self-stretch font-inter font-medium text-white text-sm tracking-[0] leading-normal">
               Lucky Spin
             </div>
-          </div>
-          <div className="flex flex-col w-[55px] items-center gap-2.5 relative opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer group">
+          </Link>
+
+          {/* Continue this pattern for Redeem, Tournament, Profile, etc. */}
+          <Link to="/redeem" className="flex flex-col w-[55px] items-center gap-2.5 relative opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer group">
             <div className="h-1 w-0 bg-gradient-to-b from-[#F2C36B] to-[#DD8F1F] group-hover:w-full transition-all duration-300 rounded-b-md absolute top-[-12px]"></div>
             <img
               className="relative w-[30px] h-[30px]"
               alt="Redeem"
-              src="https://c.animaapp.com/mdfn2b29iC3wMU/img/frame.svg"
+              src="/images/frame.svg"
             />
             <div className="relative self-stretch font-inter font-medium text-white text-sm tracking-[0] leading-normal">
               Redeem
             </div>
-          </div>
-          <div className="flex flex-col w-[81px] items-center gap-[5px] relative opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer group">
+          </Link>
+
+          <Link to="/tournament" className="flex flex-col w-[81px] items-center gap-[5px] relative opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer group">
             <div className="h-1 w-0 bg-gradient-to-b from-[#F2C36B] to-[#DD8F1F] group-hover:w-full transition-all duration-300 rounded-b-md absolute top-[-12px]"></div>
             <img
               className="relative w-[38px] h-[38px]"
               alt="Tournament"
-              src="https://c.animaapp.com/mdfn2b29iC3wMU/img/frame-1.svg"
+              src="/images/frame-1.svg"
             />
             <div className="relative self-stretch font-inter font-medium text-white text-sm tracking-[0] leading-normal">
               Tournament
             </div>
-          </div>
-          <div className="flex flex-col w-[43px] items-center gap-[5px] relative opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer group">
+          </Link>
+
+          <Link to="/profile" className="flex flex-col w-[43px] items-center gap-[5px] relative opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer group">
             <div className="h-1 w-0 bg-gradient-to-b from-[#F2C36B] to-[#DD8F1F] group-hover:w-full transition-all duration-300 rounded-b-md absolute top-[-12px]"></div>
             <div className="relative w-[34px] h-[34px] overflow-hidden">
-              <div className="w-7 h-[34px] bg-[url(https://c.animaapp.com/mdfn2b29iC3wMU/img/vector.svg)] bg-cover" />
+              <div className="w-7 h-[34px] bg-[url(/images/Group.png)] bg-cover" />
             </div>
             <div className="relative self-stretch font-inter font-medium text-white text-sm tracking-[0] leading-normal">
               Profile
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
