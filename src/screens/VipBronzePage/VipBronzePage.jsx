@@ -34,7 +34,7 @@ const VipBronzePage = () => {
     // The main container now uses min-h-screen to ensure it's at least as tall as the viewport.
     // It's also a flex column to push the footer to the bottom if content is short.
     // The width is fixed to 375px as per your other pages.
-    <div className="bg-[#070707] w-[375px] min-h-screen flex flex-col relative mx-auto">
+    <div className="bg-[#070707] w-[375px] min-h-screen flex flex-col relative mx-auto" style={{ backgroundColor: 'var(--color-bg-dark)' }}>
       {/* Header component, absolutely positioned at the top */}
       <Header />
 
@@ -47,11 +47,12 @@ const VipBronzePage = () => {
           <div className="flex w-full max-w-[344px] items-center justify-between mx-auto">
             <div className="flex flex-col items-center">
               {/* VIP text with gradient */}
-              <div className="bg-[linear-gradient(0deg,rgba(242,195,107,0)_0%,rgba(221,143,31,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-extrabold text-[80px] leading-[80px] transition-all duration-500 hover:scale-105">
+              {/* Using text-title-gold for the gradient effect */}
+              <div className="text-title-gold font-extrabold text-[80px] leading-[80px] transition-all duration-500 hover:scale-105">
                 VIP
               </div>
               {/* Reward System text */}
-              <div className="text-[#ffffff99] text-sm text-center font-extrabold">
+              <div className="text-subtitle text-sm text-center font-extrabold" style={{ color: 'var(--color-text-white-60)' }}>
                 REWARD SYSTEM
               </div>
             </div>
@@ -67,20 +68,21 @@ const VipBronzePage = () => {
           <div className="flex flex-col items-center gap-11 w-full">
             <div className="flex flex-col items-start gap-1.5 w-full">
               {/* Current rank display */}
-              <p className="w-full bg-[linear-gradient(180deg,rgba(242,195,107,1)_0%,rgba(217,148,89,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-medium text-sm text-center">
+              <p className="w-full gradient-gold-vertical font-medium text-sm text-center">
                 Your current rank is {currentRank}
               </p>
 
               {/* Rank Progress Bar */}
               <div className="relative w-full h-[73px] mt-2">
                 {/* Progress bar line */}
-                <div className="absolute w-[90%] h-1 top-[34px] left-[5%] bg-[linear-gradient(90deg,rgba(243,168,29,0.5)_0%,rgba(141,97,17,0.41)_100%)]" />
+                <div className="absolute w-[90%] h-1 top-[34px] left-[5%]" style={{ background: 'linear-gradient(90deg, var(--color-primary-light) 0%, rgba(141,97,17,0.41) 100%)' }} />
                 
                 {/* Tier images and names */}
                 <div className="absolute w-full h-[73px] top-0 left-0">
                   {/* Pointer for current rank - adjust left position as needed */}
                   <img
-                    className="absolute w-1.5 h-2 top-0.5 left-[calc(16.66%*1.5)]" // Example: Adjust based on actual rank position
+                    className="absolute w-1.5 h-2 top-0.5" // Adjust left position dynamically based on currentRank
+                    style={{ left: `calc(${tiers.findIndex(t => t.name === currentRank) * (100 / tiers.length)}% + 16.66% / 2)` }}
                     alt="Pointer"
                     src="/images/polygon-1.svg"
                   />
@@ -93,7 +95,7 @@ const VipBronzePage = () => {
                           alt={tier.name}
                           src={tier.image}
                         />
-                        <div className={`text-[10px] text-center ${tier.name === currentRank ? 'bg-[linear-gradient(0deg,rgba(242,195,107,0)_0%,rgba(221,143,31,1)_100%)] [-webkit-background-clip:text] bg-clip-text [-webkit-text-fill-color:transparent] [text-fill-color:transparent] font-medium' : 'text-[#ffffffcc]'}`}>
+                        <div className={`text-[10px] text-center ${tier.name === currentRank ? 'gradient-gold-vertical font-medium' : ''}`} style={{ color: tier.name === currentRank ? 'unset' : 'var(--color-text-white-80)' }}>
                           {tier.name}
                         </div>
                       </div>
@@ -104,18 +106,24 @@ const VipBronzePage = () => {
             </div>
 
             {/* Tier Table */}
-            <div className="flex flex-col p-2.5 w-full rounded-[14px] border-[0.5px] border-solid border-[#e4e6e580] transition-all duration-300 hover:border-[#f2c36b] overflow-hidden">
+            <div className="flex flex-col p-2.5 w-full rounded-[14px] border-[0.5px] border-solid border-glow transition-all duration-300 hover:border-[#f2c36b] overflow-hidden" style={{ borderColor: 'var(--color-border-light)' }}>
               {/* Table Header */}
-              <div className="flex w-full h-[49px] items-center justify-between p-[12px] rounded-t-[10px] border-b-[0.5px] border-[#e4e6e580] bg-[linear-gradient(0deg,rgba(242,195,107,0)_0%,rgba(221,143,31,0.2)_100%)]">
-                <div className="w-1/4 font-medium text-[#F2C36B] text-[10px]">Tier Level</div>
-                <div className="w-1/4 font-medium text-[#F2C36B] text-[10px]">DEPOSIT REQUIREMENT</div>
-                <div className="w-1/4 font-medium text-[#F2C36B] text-[10px]">MRS POINTS RATE</div>
-                <div className="w-1/4 font-medium text-[#F2C36B] text-[10px] text-right">Weekly Bonus</div>
+              <div
+                className="flex w-full h-[49px] items-center justify-between p-[12px] rounded-t-[10px] border-b-[0.5px] gradient-gold-button" // Using gradient-gold-button class
+                style={{
+                  borderTop: '1.2px solid #ECF4E9', // Applied border-top here
+                  borderColor: 'var(--color-border-light)' // Existing border-b color
+                }}
+              >
+                <div className="w-1/4 text-table-header" style={{ color: 'var(--color-text-black)' }}>Tier Level</div>
+                <div className="w-1/4 text-table-header" style={{ color: 'var(--color-text-black)' }}>DEPOSIT REQUIREMENT</div>
+                <div className="w-1/4 text-table-header" style={{ color: 'var(--color-text-black)' }}>MRS POINTS RATE</div>
+                <div className="w-1/4 text-table-header text-right" style={{ color: 'var(--color-text-black)' }}>Weekly Bonus</div>
               </div>
 
               {/* Tier Rows */}
               {tiers.map((tier, index) => (
-                <div key={index} className="flex w-full h-[49px] items-center justify-between p-[12px] border-t-[0.5px] border-[#e4e6e533] transition-all duration-300 hover:bg-[#ffffff0a]">
+                <div key={index} className="flex w-full h-[49px] items-center justify-between p-[12px] border-t-[0.5px] transition-all duration-300 hover:bg-[#ffffff0a]" style={{ borderColor: 'var(--color-table-border)' }}>
                   <div className="w-1/4">
                     <img
                       className="w-[22px] h-[22px] transition-transform duration-300 hover:scale-125"
@@ -123,19 +131,19 @@ const VipBronzePage = () => {
                       src={tier.image}
                     />
                   </div>
-                  <div className="w-1/4 font-normal text-white text-[8px]">{tier.deposit}</div>
-                  <div className="w-1/4 font-normal text-white text-[8px]">{tier.rate}</div>
-                  <div className="w-1/4 font-normal text-white text-[8px] text-right">{tier.bonus}</div>
+                  <div className="w-1/4 text-table-content" style={{ color: 'var(--color-text-white)' }}>{tier.deposit}</div>
+                  <div className="w-1/4 text-table-content" style={{ color: 'var(--color-text-white)' }}>{tier.rate}</div>
+                  <div className="w-1/4 text-table-content text-right" style={{ color: 'var(--color-text-white)' }}>{tier.bonus}</div>
                 </div>
               ))}
 
               {/* Additional Tier Rows */}
               {additionalTiers.map((tier, index) => (
-                <div key={index} className="flex w-full h-[49px] items-center justify-between p-[12px] border-t-[0.5px] border-[#e4e6e533] transition-all duration-300 hover:bg-[#ffffff0a]">
+                <div key={index} className="flex w-full h-[49px] items-center justify-between p-[12px] border-t-[0.5px] transition-all duration-300 hover:bg-[#ffffff0a]" style={{ borderColor: 'var(--color-table-border)' }}>
                   <div className="w-1/4"></div> {/* Empty div for alignment */}
-                  <div className="w-1/4 font-normal text-white text-[8px]">{tier.deposit}</div>
-                  <div className="w-1/4 font-normal text-white text-[8px]">{tier.rate}</div>
-                  <div className="w-1/4 font-normal text-white text-[8px] text-right">{tier.bonus}</div>
+                  <div className="w-1/4 text-table-content" style={{ color: 'var(--color-text-white)' }}>{tier.deposit}</div>
+                  <div className="w-1/4 text-table-content" style={{ color: 'var(--color-text-white)' }}>{tier.rate}</div>
+                  <div className="w-1/4 text-table-content text-right" style={{ color: 'var(--color-text-white)' }}>{tier.bonus}</div>
                 </div>
               ))}
             </div>
@@ -145,7 +153,7 @@ const VipBronzePage = () => {
         {/* Terms & Conditions Section */}
         <div className="mt-[54px] w-full max-w-[346px] mx-auto relative pb-[20px]">
           {/* Terms content box */}
-          <div className="w-full h-[135px] p-4 rounded-lg overflow-hidden border-[0.5px] border-solid border-[#ffffff1a] bg-[linear-gradient(0deg,rgba(242,195,107,0)_0%,rgba(221,143,31,0.1)_100%)]">
+          <div className="w-full h-[135px] p-4 rounded-lg overflow-hidden border-[0.5px] border-solid gradient-gold-bg" style={{ borderColor: 'var(--color-border-white-20)' }}>
             <div className="flex flex-col gap-1.5 mt-4">
               {terms.map((term, index) => (
                 <div key={index} className="flex items-start gap-[3px]">
@@ -154,15 +162,20 @@ const VipBronzePage = () => {
                     alt="Bullet"
                     src="/images/frame.svg"
                   />
-                  <p className="font-medium text-white text-[8px]">{term}</p>
+                  <p className="font-medium text-[8px]" style={{ color: 'var(--color-text-white)' }}>{term}</p>
                 </div>
               ))}
             </div>
           </div>
           
           {/* "Terms & Conditions" title box */}
-          <div className="absolute top-0 left-0 flex items-center justify-center px-4 py-1.5 rounded-md border-[0.5px] border-solid border-[#ffffff66] shadow-[inset_-5px_-5px_15px_#00000066,1px_4px_11px_#0000001a] bg-[linear-gradient(0deg,rgba(242,195,107,0)_0%,rgba(221,143,31,0.3)_100%)] transition-all duration-300 hover:shadow-[inset_-2px_-2px_10px_#00000066,1px_4px_15px_#0000001a]">
-            <div className="font-medium text-[#F2C36B] text-[10px] text-center whitespace-nowrap">
+          <div
+            className="absolute top-0 left-0 flex items-center justify-center px-4 py-1.5 rounded-md border-[0.5px] border-solid shadow-button gradient-gold-button transition-all duration-300 hover:shadow-[inset_-2px_-2px_10px_#00000066,1px_4px_15px_#0000001a]" // Using gradient-gold-button class
+            style={{
+              borderColor: 'var(--color-border-white-40)'
+            }}
+          >
+            <div className="font-medium text-[10px] text-center whitespace-nowrap" style={{ color: 'var(--color-text-black)' }}>
               Terms &amp; Conditions
             </div>
           </div>

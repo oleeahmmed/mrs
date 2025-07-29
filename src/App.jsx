@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"; // Import React
 
 // Import all your screen components
 import HomePage from './screens/HomePage/HomePage';
+import HomePageDesign2 from './screens/HomePage/HomePageDesign2';
 
 import { LuckySpinPage } from './screens/LuckySpinPage/LuckySpinPage';
 import RedeemPage from './screens/RedeemPage/RedeemPage';
@@ -36,6 +37,8 @@ function App() {
           <Routes>
             {/* Define routes for each of your pages */}
             <Route path="/" element={<HomePage />} />
+            <Route path="/homepage2" element={<HomePageDesign2 />} />
+
             <Route path="/lucky-spin" element={<LuckySpinPage />} />
             <Route path="/redeem" element={<RedeemPage />} />
             <Route path="/tournament" element={<Tournament />} />
